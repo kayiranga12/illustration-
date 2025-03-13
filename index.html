@@ -1,0 +1,1543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Portfolio | Illustrator</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- AOS Animation Library -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #1a252f;
+            --font-primary: 'Montserrat', sans-serif;
+            --font-secondary: 'Raleway', sans-serif;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&family=Raleway:wght@300;400;600&display=swap');
+
+        body {
+            font-family: var(--font-primary);
+            color: var(--primary-color);
+            background-color: #f8f9fa;
+            overflow-x: hidden;
+        }
+
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            margin-bottom: 60px;
+            text-align: center;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            position: relative;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: var(--secondary-color);
+            bottom: 0;
+            left: calc(50% - 25px);
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            background-color: transparent;
+            padding: 20px 0;
+            transition: all 0.5s ease;
+        }
+
+        .navbar.navbar-scrolled {
+            background-color: var(--dark-color);
+            padding: 10px 0;
+            box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: var(--light-color) !important;
+        }
+
+        .navbar-brand span {
+            color: var(--secondary-color);
+        }
+
+        .navbar-nav .nav-item {
+            margin: 0 10px;
+        }
+
+        .navbar-nav .nav-link {
+            color: var(--light-color) !important;
+            font-weight: 500;
+            padding: 8px 15px !important;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link.active {
+            color: var(--secondary-color) !important;
+        }
+
+        /* Hero Section */
+        #hero {
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url('assets/fashion-bg.jpg') center center;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: var(--light-color);
+        }
+
+        #hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        #hero h2 {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 40px;
+        }
+
+        .btn-hero {
+            font-weight: 600;
+            padding: 12px 30px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+        }
+
+        .btn-primary:hover {
+            background-color: #c0392b;
+            border-color: #c0392b;
+        }
+
+        .btn-outline-primary {
+            color: var(--light-color);
+            border-color: var(--light-color);
+        }
+
+        .btn-outline-primary:hover {
+            background-color: var(--light-color);
+            color: var(--primary-color);
+        }
+
+        /* About Section */
+        .about-img {
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .about-content h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .about-content p {
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .about-content .skills {
+            margin-top: 30px;
+        }
+
+        .skill-item {
+            margin-bottom: 20px;
+        }
+
+        .skill-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .skill-bar {
+            height: 10px;
+            background-color: #e9ecef;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .skill-percentage {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 10px;
+            border-radius: 10px;
+            background-color: var(--secondary-color);
+        }
+
+        /* Portfolio Section */
+        .portfolio-container {
+            margin-bottom: 30px;
+        }
+
+        .portfolio-filters {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .portfolio-filters .filter-btn {
+            padding: 8px 15px;
+            margin: 5px;
+            background-color: transparent;
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            border-radius: 50px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .portfolio-filters .filter-btn.active,
+        .portfolio-filters .filter-btn:hover {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+            color: var(--light-color);
+        }
+
+        .portfolio-item {
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            height: 300px;
+            background-color: #ddd;
+        }
+
+        .portfolio-img {
+            transition: all 0.4s ease;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .portfolio-info {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0;
+            background: rgba(44, 62, 80, 0.8);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            transition: all 0.4s ease;
+            color: var(--light-color);
+            text-align: center;
+        }
+
+        .portfolio-item:hover .portfolio-info {
+            opacity: 1;
+        }
+
+        .portfolio-item:hover .portfolio-img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-info h4 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .portfolio-info p {
+            margin-bottom: 15px;
+        }
+
+        .portfolio-info .preview-link {
+            color: var(--light-color);
+            font-size: 1.5rem;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            border-radius: 50%;
+            background-color: var(--secondary-color);
+            display: inline-block;
+            text-align: center;
+            margin: 0 5px;
+            transition: all 0.3s ease;
+        }
+
+        .portfolio-info .preview-link:hover {
+            background-color: var(--light-color);
+            color: var(--secondary-color);
+        }
+
+        /* Experience Section */
+        .timeline {
+            position: relative;
+            padding: 0;
+            list-style: none;
+        }
+
+        .timeline:before {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 40px;
+            width: 2px;
+            content: '';
+            background-color: var(--primary-color);
+        }
+
+        .timeline > li {
+            position: relative;
+            min-height: 50px;
+            margin-bottom: 50px;
+        }
+
+        .timeline > li:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline > li:after, .timeline > li:before {
+            display: table;
+            content: ' ';
+        }
+
+        .timeline > li:after {
+            clear: both;
+        }
+
+        .timeline > li .timeline-panel {
+            position: relative;
+            float: right;
+            width: calc(100% - 90px);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            background-color: white;
+        }
+
+        .timeline > li .timeline-panel:before {
+            right: auto;
+            left: -15px;
+            border-right-width: 15px;
+            border-left-width: 0;
+        }
+
+        .timeline > li .timeline-image {
+            position: absolute;
+            z-index: 10;
+            left: 15px;
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            color: white;
+            border-radius: 50%;
+            background-color: var(--secondary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .timeline-heading h4 {
+            margin-top: 0;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .timeline-heading h4.subheading {
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+
+        .timeline-body p {
+            margin-bottom: 0;
+        }
+
+        /* Contact Section */
+        .contact-info-item {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .contact-info-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 70px;
+            height: 70px;
+            margin-bottom: 20px;
+            border-radius: 50%;
+            background-color: var(--secondary-color);
+            color: var(--light-color);
+            font-size: 1.5rem;
+        }
+
+        .contact-info-content h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .contact-form {
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+            background-color: white;
+        }
+
+        .form-control {
+            height: 50px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        textarea.form-control {
+            height: 150px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: var(--light-color);
+            padding: 70px 0 20px;
+        }
+
+        .footer-social {
+            margin-bottom: 30px;
+        }
+
+        .footer-social a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--light-color);
+            margin: 0 5px;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            background-color: var(--secondary-color);
+            color: var(--light-color);
+        }
+
+        .copyright {
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            visibility: hidden;
+            opacity: 0;
+            right: 15px;
+            bottom: 15px;
+            z-index: 996;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--secondary-color);
+            color: var(--light-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s;
+        }
+
+        .back-to-top:hover {
+            background: #c0392b;
+            color: var(--light-color);
+        }
+
+        .back-to-top.active {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .navbar-collapse {
+                background-color: var(--dark-color);
+                padding: 20px;
+                margin-top: 10px;
+                border-radius: 5px;
+            }
+            
+            #hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            #hero h2 {
+                font-size: 1.2rem;
+            }
+            
+            .section-padding {
+                padding: 70px 0;
+            }
+            
+            .about-img {
+                margin-bottom: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            #hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .portfolio-filters .filter-btn {
+                margin: 3px;
+                padding: 6px 12px;
+                font-size: 0.9rem;
+            }
+            
+            .timeline:before {
+                left: 30px;
+            }
+            
+            .timeline > li .timeline-image {
+                left: 5px;
+                width: 45px;
+                height: 45px;
+            }
+            
+            .timeline > li .timeline-panel {
+                width: calc(100% - 70px);
+            }
+        }
+
+        /* Modal Styling */
+        .portfolio-modal .modal-content {
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .portfolio-modal .modal-header {
+            border: none;
+            padding: 1.5rem;
+            background-color: var(--primary-color);
+            color: var(--light-color);
+        }
+
+        .portfolio-modal .close {
+            font-size: 1.5rem;
+            color: var(--light-color);
+            opacity: 1;
+        }
+
+        .portfolio-modal .modal-body {
+            padding: 2rem;
+        }
+
+        .portfolio-modal .modal-img {
+            margin-bottom: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .portfolio-modal h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .portfolio-modal .info-list {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+
+        .portfolio-modal .info-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .portfolio-modal .info-list li:last-child {
+            border-bottom: none;
+        }
+
+        .portfolio-modal .info-list strong {
+            font-weight: 600;
+            margin-right: 10px;
+            color: var(--primary-color);
+        }
+        
+        /* Animation for filtering */
+        .animate-item {
+            animation-duration: 0.5s;
+            animation-fill-mode: both;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translate3d(0, 20px, 0);
+            }
+            to {
+                opacity: 1;
+                transform: none;
+            }
+        }
+        
+        .fadeIn {
+            animation-name: fadeIn;
+        }
+    </style>
+</head>
+<body>
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#hero">KA<span>MOLE</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#hero">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#portfolio">Portfolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#experience">Experience</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h1 data-aos="fade-up">KAMOLE JOSUE</h1>
+                    <h2 data-aos="fade-up" data-aos-delay="400">Professional Illustrator & Visual Artist</h2>
+                    <div data-aos="fade-up" data-aos-delay="600">
+                        <a href="#portfolio" class="btn btn-primary btn-hero me-3">View My Work</a>
+                        <a href="#contact" class="btn btn-outline-primary btn-hero">Contact Me</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section-padding">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>About Me</h2>
+                <p>Learn more about my journey as an illustrator</p>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-5" data-aos="fade-right" data-aos-delay="300">
+                    <div class="about-img">
+                        <img src="assets/fashion-bg.jpg" alt="About Me" class="img-fluid">
+                    </div>
+                </div>
+                <div class="col-lg-7" data-aos="fade-left" data-aos-delay="400">
+                    <div class="about-content">
+                        <h3>Professional Illustrator with a passion for storytelling</h3>
+                        <p>
+                            Welcome to my portfolio! I'm a professional illustrator with over 10 years of experience 
+                            creating vibrant and compelling visual stories. My work spans across editorial, publishing, 
+                            advertising, and digital media.
+                        </p>
+                        <p>
+                            I specialize in character design, concept art, and narrative illustration. My style blends 
+                            traditional techniques with digital innovation, resulting in artwork that is both timeless 
+                            and contemporary.
+                        </p>
+                        <p>
+                            Throughout my career, I've collaborated with leading publishers, advertising agencies, and 
+                            entertainment companies to bring their visions to life through my illustrations.
+                        </p>
+                        
+                        <div class="skills">
+                            <h4>My Skills</h4>
+                            <div class="skill-item">
+                                <div class="skill-name">Digital Illustration</div>
+                                <div class="skill-bar">
+                                    <div class="skill-percentage" style="width: 95%;"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">Character Design</div>
+                                <div class="skill-bar">
+                                    <div class="skill-percentage" style="width: 90%;"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">Traditional Drawing</div>
+                                <div class="skill-bar">
+                                    <div class="skill-percentage" style="width: 85%;"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">Adobe Creative Suite</div>
+                                <div class="skill-bar">
+                                    <div class="skill-percentage" style="width: 92%;"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-name">Concept Development</div>
+                                <div class="skill-bar">
+                                    <div class="skill-percentage" style="width: 88%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="section-padding bg-light">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Portfolio</h2>
+                <p>Check out my latest work</p>
+            </div>
+
+            <div class="portfolio-filters" data-aos="fade-up">
+                <button class="filter-btn active" data-filter="*">All</button>
+                <button class="filter-btn" data-filter=".character">Character Design</button>
+                <button class="filter-btn" data-filter=".editorial">Editorial</button>
+                <button class="filter-btn" data-filter=".concept">Concept Art</button>
+                <button class="filter-btn" data-filter=".digital">Digital Paintings</button>
+            </div>
+
+            <div class="row portfolio-container">
+                <!-- Portfolio Item 1 -->
+                <div class="col-lg-4 col-md-6 portfolio-item character" data-aos="fade-up">
+                    <div class="portfolio-item">
+                        <img src="/api/placeholder/600/600" class="portfolio-img" alt="Character Design">
+                        <div class="portfolio-info">
+                            <h4>Character Design</h4>
+                            <p>Fantasy Character Series</p>
+                            <a href="#" class="preview-link" data-bs-toggle="modal" data-bs-target="#portfolioModal1"><i class="fas fa-plus"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 2 -->
+                <div class="col-lg-4 col-md-6 portfolio-item editorial" data-aos="fade-up" data-aos-delay="200">
+                    <div class="portfolio-item">
+                        <img src="/api/placeholder/600/600" class="portfolio-img" alt="Editorial Illustration">
+                        <div class="portfolio-info">
+                            <h4>Editorial Illustration</h4>
+                            <p>Magazine Cover Design</p>
+                            <a href="#" class="preview-link" data-bs-toggle="modal" data-bs-target="#portfolioModal2"><i class="fas fa-plus"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 3 -->
+                <div class="col-lg-4 col-md-6 portfolio-item concept" data-aos="fade-up" data-aos-delay="300">
+                    <div class="portfolio-item">
+                        <img src="/api/placeholder/600/600" class="portfolio-img" alt="Concept Art">
+                        <div class="portfolio-info">
+                            <h4>Concept Art</h4>
+                            <p>Game Environment Design</p>
+                            <a href="#" class="preview-link" data-bs-toggle="modal" data-bs-target="#portfolioModal3"><i class="fas fa-plus"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 4 -->
+                <div class="col-lg-4 col-md-6 portfolio-item digital" data-aos="fade-up" data-aos-delay="400">
+                    <div class="portfolio-item">
+                        <img src="/api/placeholder/600/600" class="portfolio-img" alt="Digital Painting">
+                        <div class="portfolio-info">
+                            <h4>Digital Painting</h4>
+                            <p>Landscape Series</p>
+                            <a href="#" class="preview-link" data-bs-toggle="modal" data-bs-target="#portfolioModal4"><i class="fas fa-plus"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 5 -->
+                <div class="col-lg-4 col-md-6 portfolio-item character" data-aos="fade-up" data-aos-delay="500">
+                    <div class="portfolio-item">
+                        <img src="/api/placeholder/600/600" class="portfolio-img" alt="Character Design">
+                        <div class="portfolio-info">
+                            <h4>Character Design</h4>
+                            <p>Animation Project Characters</p>
+                            <a href="#" class="preview-link" data-bs-toggle="modal" data-bs-target="#portfolioModal5"><i class="fas fa-plus"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Item 6 -->
+                <div class="col-lg-4 col-md-6 portfolio-item editorial" data-aos="fade-up" data-aos-delay="600">
+                    <div class="portfolio-item">
+                        <img src="/api/placeholder/600/600" class="portfolio-img" alt="Editorial Illustration">
+                        <div class="portfolio-info">
+                            <h4>Editorial Illustration</h4>
+                            <p>Book Cover Series</p>
+                            <a href="#" class="preview-link" data-bs-toggle="modal" data-bs-target="#portfolioModal6"><i class="fas fa-plus"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section-padding">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Experience</h2>
+                <p>My professional journey</p>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <ul class="timeline">
+                        <!-- Experience Item 1 -->
+                        <li data-aos="fade-up">
+                            <div class="timeline-image">
+                                <i class="fas fa-briefcase"></i>
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4>2020 - Present</h4>
+                                    <h4 class="subheading">Senior Illustrator</h4>
+                                    <p class="text-muted">Creative Studios Inc.</p>
+                                </div>
+                                <div class="timeline-body">
+                                    <p>Lead a team of illustrators working on major publishing and advertising projects. Developed visual storytelling concepts for international brands. Created character designs for animated series.</p>
+                                </div>
+                            </div>
+                        </li>
+
+                        <!-- Experience Item 2 -->
+                        <li data-aos="fade-up" data-aos-delay="200">
+                            <div class="timeline-image">
+                                <i class="fas fa-briefcase"></i>
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4>2016 - 2020</h4>
+                                    <h4 class="subheading">Illustrator & Concept Artist</h4>
+                                    <p class="text-muted">Imagination Agency</p>
+                                </div>
+                                <div class="timeline-body">
+                                    <p>Created editorial illustrations for major magazines and newspapers. Developed concept art for video game environments and characters. Collaborated with art directors to deliver compelling visual narratives.</p>
+                                </div>
+                            </div>
+                        </li>
+
+                        <!-- Experience Item 3 -->
+                        <li data-aos="fade-up" data-aos-delay="300">
+                            <div class="timeline-image">
+                                <i class="fas fa-briefcase"></i>
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4>2013 - 2016</h4>
+                                    <h4 class="subheading">Junior Illustrator</h4>
+                                    <p class="text-muted">Artworx Design Studio</p>
+                                </div>
+                                <div class="timeline-body">
+                                    <p>Assisted senior illustrators on various client projects. Developed illustrations for children's books and educational materials. Created digital assets for marketing campaigns.</p>
+                                </div>
+                            </div>
+                        </li>
+
+                        <!-- Experience Item 4 -->
+                        <li data-aos="fade-up" data-aos-delay="400">
+                            <div class="timeline-image">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4>2009 - 2013</h4>
+                                    <h4 class="subheading">BFA in Illustration</h4>
+                                    <p class="text-muted">School of Visual Arts</p>
+                                </div>
+                                <div class="timeline-body">
+                                    <p>Graduated with honors. Specialized in digital illustration and traditional drawing techniques. Won the student excellence award for my senior thesis project.</p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section-padding bg-light">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Contact Me</h2>
+                <p>Get in touch for collaborations and inquiries</p>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4" data-aos="fade-up">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="contact-info-item">
+                                <div class="contact-info-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="contact-info-content">
+                                    <h3>Address</h3>
+                                    <p>123 Art Street, Creative City, 10001</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="contact-info-item">
+                                <div class="contact-info-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="contact-info-content">
+                                    <h3>Email</h3>
+                                    <p>contact@yourname.com</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="contact-info-item">
+                                <div class="contact-info-icon">
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                                <div class="contact-info-content">
+                                    <h3>Phone</h3>
+                                    <p>+1 (555) 123-4567</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
+                    <div class="contact-form">
+                        <form id="contactForm">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="name" placeholder="Your Name" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="email" class="form-control" id="email" placeholder="Your Email" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="subject" placeholder="Subject" required>
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control" id="message" placeholder="Your Message" required></textarea>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary">Send Message</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h3>Your Name</h3>
+                    <p>Professional Illustrator & Visual Artist</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-behance"></i></a>
+                        <a href="#"><i class="fab fa-dribbble"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                    <div class="copyright">
+                        <p>&copy; <span id="currentYear"></span> Your Name. All Rights Reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Portfolio Modals -->
+    <!-- Portfolio Modal 1 -->
+    <div class="modal fade portfolio-modal" id="portfolioModal1" tabindex="-1" aria-labelledby="portfolioModal1Label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="portfolioModal1Label">Character Design</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-8 mx-auto">
+                            <div class="modal-img">
+                                <img src="/api/placeholder/800/600" alt="Character Design" class="img-fluid">
+                            </div>
+                            <h3>Fantasy Character Series</h3>
+                            <p>A series of character designs created for a fantasy novel. The project involved developing the main cast of characters and bringing the author's vision to life.</p>
+                            <ul class="info-list">
+                                <li><strong>Client:</strong> Fictional Publishing House</li>
+                                <li><strong>Date:</strong> January 2023</li>
+                                <li><strong>Category:</strong> Character Design</li>
+                                <li><strong>Tools:</strong> Procreate, Adobe Photoshop</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Portfolio Modal 2 -->
+    <div class="modal fade portfolio-modal" id="portfolioModal2" tabindex="-1" aria-labelledby="portfolioModal2Label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="portfolioModal2Label">Editorial Illustration</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-8 mx-auto">
+                            <div class="modal-img">
+                                <img src="/api/placeholder/800/600" alt="Editorial Illustration" class="img-fluid">
+                            </div>
+                            <h3>Magazine Cover Design</h3>
+                            <p>Cover illustration for a prominent magazine's special issue on technology and creativity. The brief called for a visually striking image that would convey the intersection of art and technology.</p>
+                            <ul class="info-list">
+                                <li><strong>Client:</strong> Tech & Art Magazine</li>
+                                <li><strong>Date:</strong> March 2023</li>
+                                <li><strong>Category:</strong> Editorial</li>
+                                <li><strong>Tools:</strong> Adobe Illustrator, Adobe Photoshop</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Portfolio Modal 3 -->
+    <div class="modal fade portfolio-modal" id="portfolioModal3" tabindex="-1" aria-labelledby="portfolioModal3Label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="portfolioModal3Label">Concept Art</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-8 mx-auto">
+                            <div class="modal-img">
+                                <img src="/api/placeholder/800/600" alt="Concept Art" class="img-fluid">
+                            </div>
+                            <h3>Game Environment Design</h3>
+                            <p>Environmental concept art for a fantasy role-playing game. Designed key locations including ancient temples, mystical forests, and magical cities that players would explore throughout the game.</p>
+                            <ul class="info-list">
+                                <li><strong>Client:</strong> Game Development Studio</li>
+                                <li><strong>Date:</strong> June 2023</li>
+                                <li><strong>Category:</strong> Concept Art</li>
+                                <li><strong>Tools:</strong> Adobe Photoshop, Clip Studio Paint</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Portfolio Modal 4 -->
+    <div class="modal fade portfolio-modal" id="portfolioModal4" tabindex="-1" aria-labelledby="portfolioModal4Label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="portfolioModal4Label">Digital Painting</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-8 mx-auto">
+                            <div class="modal-img">
+                                <img src="/api/placeholder/800/600" alt="Digital Painting" class="img-fluid">
+                            </div>
+                            <h3>Landscape Series</h3>
+                            <p>A personal project exploring dreamlike landscapes inspired by travels around the world. This series combines real-world references with imaginative elements to create surreal yet familiar environments.</p>
+                            <ul class="info-list">
+                                <li><strong>Client:</strong> Personal Project</li>
+                                <li><strong>Date:</strong> August 2023</li>
+                                <li><strong>Category:</strong> Digital Painting</li>
+                                <li><strong>Tools:</strong> Procreate, Adobe Photoshop</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Portfolio Modal 5 -->
+    <div class="modal fade portfolio-modal" id="portfolioModal5" tabindex="-1" aria-labelledby="portfolioModal5Label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="portfolioModal5Label">Character Design</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-8 mx-auto">
+                            <div class="modal-img">
+                                <img src="/api/placeholder/800/600" alt="Character Design" class="img-fluid">
+                            </div>
+                            <h3>Animation Project Characters</h3>
+                            <p>Character designs for an animated short film. The project required creating expressive characters with distinct personalities that would be suitable for animation.</p>
+                            <ul class="info-list">
+                                <li><strong>Client:</strong> Animation Studio</li>
+                                <li><strong>Date:</strong> October 2023</li>
+                                <li><strong>Category:</strong> Character Design</li>
+                                <li><strong>Tools:</strong> Adobe Illustrator, Clip Studio Paint</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Portfolio Modal 6 -->
+    <div class="modal fade portfolio-modal" id="portfolioModal6" tabindex="-1" aria-labelledby="portfolioModal6Label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="portfolioModal6Label">Editorial Illustration</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-8 mx-auto">
+                            <div class="modal-img">
+                                <img src="/api/placeholder/800/600" alt="Editorial Illustration" class="img-fluid">
+                            </div>
+                            <h3>Book Cover Series</h3>
+                            <p>A series of book cover illustrations for a collection of classic literature. Each cover was designed to capture the essence of the story while maintaining a cohesive style across the series.</p>
+                            <ul class="info-list">
+                                <li><strong>Client:</strong> Publishing House</li>
+                                <li><strong>Date:</strong> December 2023</li>
+                                <li><strong>Category:</strong> Editorial</li>
+                                <li><strong>Tools:</strong> Adobe Photoshop, Adobe Illustrator</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS Animation JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <!-- Isotope JS for portfolio filtering -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script>
+        // Initialize AOS animations
+        document.addEventListener('DOMContentLoaded', function() {
+            AOS.init({
+                duration: 1000,
+                once: true,
+                easing: 'ease-in-out'
+            });
+
+            // Set current year in footer
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+            
+            // Navbar change on scroll
+            const navbar = document.querySelector('.navbar');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('navbar-scrolled');
+                } else {
+                    navbar.classList.remove('navbar-scrolled');
+                }
+            });
+            
+            // Back to top button
+            const backToTop = document.querySelector('.back-to-top');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 300) {
+                    backToTop.classList.add('active');
+                } else {
+                    backToTop.classList.remove('active');
+                }
+            });
+            
+            backToTop.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // Smooth scrolling for nav links
+            document.querySelectorAll('a.nav-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    if (this.hash !== '') {
+                        e.preventDefault();
+                        
+                        const hash = this.hash;
+                        
+                        document.querySelector(hash).scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                        
+                        // Update active nav link
+                        document.querySelectorAll('.nav-link').forEach(navLink => {
+                            navLink.classList.remove('active');
+                        });
+                        this.classList.add('active');
+                        
+                        // Close mobile menu if open
+                        const navbarCollapse = document.querySelector('.navbar-collapse');
+                        if (navbarCollapse.classList.contains('show')) {
+                            navbarCollapse.classList.remove('show');
+                        }
+                    }
+                });
+            });
+            
+            // Initialize Isotope for portfolio filtering
+            // Wait for images to load
+            window.addEventListener('load', function() {
+                // Initialize Isotope
+                const portfolioContainer = document.querySelector('.portfolio-container');
+                const iso = new Isotope(portfolioContainer, {
+                    itemSelector: '.portfolio-item',
+                    layoutMode: 'fitRows'
+                });
+                
+                // Filter items on button click
+                document.querySelectorAll('.filter-btn').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const filterValue = this.getAttribute('data-filter');
+                        
+                        // Add animation class to visible items
+                        document.querySelectorAll('.portfolio-item').forEach(item => {
+                            item.classList.remove('animate-item', 'fadeIn');
+                            
+                            if (filterValue === '*' || item.classList.contains(filterValue.substring(1))) {
+                                item.classList.add('animate-item', 'fadeIn');
+                            }
+                        });
+                        
+                        // Update active button
+                        document.querySelectorAll('.filter-btn').forEach(btn => {
+                            btn.classList.remove('active');
+                        });
+                        this.classList.add('active');
+                        
+                        // Filter items
+                        if (filterValue === '*') {
+                            iso.arrange({ filter: '*' });
+                        } else {
+                            iso.arrange({ filter: filterValue });
+                        }
+                    });
+                });
+            });
+            
+            // Contact form handling
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Get form values
+                    const name = document.getElementById('name').value;
+                    const email = document.getElementById('email').value;
+                    const subject = document.getElementById('subject').value;
+                    const message = document.getElementById('message').value;
+                    
+                    // Normally you would send this data to a server
+                    // For demo purposes, we'll just log it to console
+                    console.log({
+                        name,
+                        email,
+                        subject,
+                        message
+                    });
+                    
+                    // Show success message (you can replace this with your own logic)
+                    alert('Thank you for your message! I\'ll get back to you soon.');
+                    
+                    // Reset form
+                    contactForm.reset();
+                });
+            }
+            
+            // Portfolio Modal - Update active nav when modal is opened
+            const portfolioModals = document.querySelectorAll('.portfolio-modal');
+            portfolioModals.forEach(modal => {
+                modal.addEventListener('shown.bs.modal', function() {
+                    // Update active nav link
+                    document.querySelectorAll('.nav-link').forEach(navLink => {
+                        navLink.classList.remove('active');
+                    });
+                    document.querySelector('a[href="#portfolio"]').classList.add('active');
+                });
+            });
+        });
+        
+        // Portfolio Item addition functionality
+        // This function would be used to add new portfolio items dynamically
+        function addPortfolioItem(title, category, image, description) {
+            // Get the portfolio container
+            const portfolioContainer = document.querySelector('.portfolio-container');
+            
+            // Create unique ID for the modal
+            const modalId = 'portfolioModal' + (document.querySelectorAll('.portfolio-modal').length + 1);
+            
+            // Create portfolio item HTML
+            const portfolioItemHTML = `
+                <div class="col-lg-4 col-md-6 portfolio-item ${category}" data-aos="fade-up">
+                    <div class="portfolio-item">
+                        <img src="${image}" class="portfolio-img" alt="${title}">
+                        <div class="portfolio-info">
+                            <h4>${title}</h4>
+                            <p>${description}</p>
+                            <a href="#" class="preview-link" data-bs-toggle="modal" data-bs-target="#${modalId}"><i class="fas fa-plus"></i></a>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // Create modal HTML
+            const modalHTML = `
+                <div class="modal fade portfolio-modal" id="${modalId}" tabindex="-1" aria-labelledby="${modalId}Label" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="${modalId}Label">${title}</h5>
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-lg-8 mx-auto">
+                                        <div class="modal-img">
+                                            <img src="${image}" alt="${title}" class="img-fluid">
+                                        </div>
+                                        <h3>${title}</h3>
+                                        <p>${description}</p>
+                                        <ul class="info-list">
+                                            <li><strong>Client:</strong> ${client || 'Personal Project'}</li>
+                                            <li><strong>Date:</strong> ${date || new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long' })}</li>
+                                            <li><strong>Category:</strong> ${category}</li>
+                                            <li><strong>Tools:</strong> ${tools || 'Adobe Creative Suite'}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // Append portfolio item to container
+            portfolioContainer.insertAdjacentHTML('beforeend', portfolioItemHTML);
+            
+            // Append modal to body
+            document.body.insertAdjacentHTML('beforeend', modalHTML);
+            
+            // Reinitialize Isotope
+            const iso = new Isotope(portfolioContainer, {
+                itemSelector: '.portfolio-item',
+                layoutMode: 'fitRows'
+            });
+            
+            // Refresh AOS animations
+            AOS.refresh();
+        }
+        
+        // Experience Item addition functionality
+        function addExperienceItem(startDate, endDate, title, company, description) {
+            // Get the timeline container
+            const timeline = document.querySelector('.timeline');
+            
+            // Create experience item HTML
+            const experienceItemHTML = `
+                <li data-aos="fade-up">
+                    <div class="timeline-image">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <div class="timeline-panel">
+                        <div class="timeline-heading">
+                            <h4>${startDate} - ${endDate || 'Present'}</h4>
+                            <h4 class="subheading">${title}</h4>
+                            <p class="text-muted">${company}</p>
+                        </div>
+                        <div class="timeline-body">
+                            <p>${description}</p>
+                        </div>
+                    </div>
+                </li>
+            `;
+            
+            // Append experience item to timeline
+            timeline.insertAdjacentHTML('beforeend', experienceItemHTML);
+            
+            // Refresh AOS animations
+            AOS.refresh();
+        }
+        
+        // Skill addition functionality
+        function addSkill(skillName, percentage) {
+            // Get the skills container
+            const skillsContainer = document.querySelector('.skills');
+            
+            // Create skill item HTML
+            const skillItemHTML = `
+                <div class="skill-item">
+                    <div class="skill-name">${skillName}</div>
+                    <div class="skill-bar">
+                        <div class="skill-percentage" style="width: ${percentage}%;"></div>
+                    </div>
+                </div>
+            `;
+            
+            // Append skill item to container
+            skillsContainer.insertAdjacentHTML('beforeend', skillItemHTML);
+        }
+        
+        // Dark/Light mode toggle functionality (optional feature)
+        function setupThemeToggle() {
+            // Check for saved theme preference or use device preference
+            const currentTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            
+            // Create toggle button and add to navbar
+            const navbarNav = document.querySelector('.navbar-nav');
+            const themeToggleHTML = `
+                <li class="nav-item ms-3">
+                    <button id="themeToggle" class="btn btn-sm btn-outline-light" aria-label="Toggle theme">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </li>
+            `;
+            
+            navbarNav.insertAdjacentHTML('beforeend', themeToggleHTML);
+            
+            // Function to set the theme
+            const setTheme = (theme) => {
+                if (theme === 'dark') {
+                    document.body.classList.add('dark-theme');
+                    document.getElementById('themeToggle').innerHTML = '<i class="fas fa-sun"></i>';
+                } else {
+                    document.body.classList.remove('dark-theme');
+                    document.getElementById('themeToggle').innerHTML = '<i class="fas fa-moon"></i>';
+                }
+                localStorage.setItem('theme', theme);
+            };
+            
+            // Set initial theme
+            setTheme(currentTheme);
+            
+            // Add event listener for toggle button
+            document.getElementById('themeToggle').addEventListener('click', () => {
+                const currentTheme = localStorage.getItem('theme') || 'light';
+                const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+                setTheme(newTheme);
+            });
+        }
+        
+        // Image lazy loading
+        function setupLazyLoading() {
+            if ('loading' in HTMLImageElement.prototype) {
+                // Use native lazy loading
+                document.querySelectorAll('img').forEach(img => {
+                    if (!img.hasAttribute('loading')) {
+                        img.setAttribute('loading', 'lazy');
+                    }
+                });
+            } else {
+                // Use Intersection Observer for lazy loading
+                const lazyImages = document.querySelectorAll('img[data-src]');
+                const imageObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const img = entry.target;
+                            img.src = img.dataset.src;
+                            observer.unobserve(img);
+                        }
+                    });
+                });
+                
+                lazyImages.forEach(img => {
+                    imageObserver.observe(img);
+                });
+            }
+        }
+    </script>
+</body>
+</html>
